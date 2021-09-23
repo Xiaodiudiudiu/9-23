@@ -1,0 +1,28 @@
+\* 输入n种货物，每种货物的重量为w，每种货物价值v，背包最多可以装c。
+\*
+
+#include<iostream>;
+using namespace std;
+
+
+int main()
+{
+    int  n, c, dp[1001][101] = {}, w[101], v[101], i, j;
+    cin >> n>>c;
+    for (i = 1; i <= n; i++)
+        cin >> w[i] >> v[i];
+
+
+    for(i=1;i<=n;++i)
+        for (j = 1; j <= c; ++j)
+        {
+            if (w[i] <= j)
+            {
+                dp[i][j]=max(dp[i - 1][j], v[i] + dp[i - 1][j - w[i]]);
+            }
+            else dp[i][j] = dp[i - 1][j];
+
+        }
+    cout << dp[n][c];
+    return 0;
+}
