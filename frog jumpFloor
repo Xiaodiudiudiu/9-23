@@ -1,0 +1,18 @@
+#include<iostream>;
+using namespace std;
+
+int f(int t)
+{
+    if (t == 1) return 1;
+    else if (t == 2) return 2;
+    else return f(t - 1) + f(t - 2);
+}
+
+int main()
+{
+
+    int  n;
+    cin >> n;
+    cout << f(n);
+    return 0;
+}
